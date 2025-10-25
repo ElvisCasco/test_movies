@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+pandas
+sqlalchemy
+psycopg2-binary  # optional, remove if you use sqlite

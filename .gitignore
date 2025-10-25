@@ -1,0 +1,13 @@
+# Python / env
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+env/
+# DB / artifacts
+movies.db
+artifacts/
+# Editor / OS
+.vscode/
+.DS_Store

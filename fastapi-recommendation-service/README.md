@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# test_movies
-=======
 # FastAPI Recommendation Service
 
 This project is a FastAPI application that implements a recommendation engine using non-negative matrix factorization (NMF) from the sklearn library. The service allows users to train a recommendation model and stores each version of the model without overwriting previous versions.
@@ -80,4 +77,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
->>>>>>> b249f95 (Initial commit - test_movies API)

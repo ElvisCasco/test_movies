@@ -1,0 +1,50 @@
+put the folder and file before showing the code pleas to guide me where to replace
+
+1. Curl — basic pagination
+http://127.0.0.1:8000/api/rest/v1/movies?limit=10&page=1
+http://127.0.0.1:8000/api/rest/v1/movies?limit=10&page=1&search=thriller
+http://127.0.0.1:8000/api/rest/v1/movies/1/avg-rating
+http://127.0.0.1:8000/api/rest/v1/ratings/
+
+3. Recommendation engine
+http://127.0.0.1:8000/docs
+GET ratings CSV / DB:
+curl "http://127.0.0.1:8000/api/rest/v1/ratings?limit=5&page=1"
+
+2. curl to get first id (bash + jq)
+curl -s "http://127.0.0.1:8000/api/rest/v1/movies?limit=1&page=1" | jq ' .movies[0].movie_id'
+
+curl -X POST "http://127.0.0.1:8000/api/rest/v1/ratings/" \
+  -H "Content-Type: application/json" \
+  -d '{"user_id":1,"movie_id":1,"rating":2.5}'
+
+3. In PowerShell
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/api/rest/v1/movies?limit=10&page=1&search=thriller"
+
+$m = Invoke-RestMethod -Uri "http://127.0.0.1:8000/api/rest/v1/movies?limit=1&page=1"
+$m.movies[0].movie_id
+
+Invoke-RestMethod -Method POST -Uri "http://127.0.0.1:8000/api/rest/v1/ratings/" -ContentType "application/json" -Body '{"user_id":1,"movie_id":1,"rating":2.5}'
+4. Python (requests)
+import requests
+r = requests.get(
+  "http://127.0.0.1:8000/api/rest/v1/movies",
+  params={"limit":10, "page":1, "search":"thriller"})
+print(r.json())
+
+import requests
+r = requests.get("http://127.0.0.1:8000/api/rest/v1/movies/1/avg-rating")
+print(r.json())
+
+5. Try interactive docs / test UI:
+Open http://127.0.0.1:8000/docs in your browser and call GET /api/rest/v1/movies.
+Expected response shape
+{
+  "movies": [
+    {"movie_id": 1, "title": "Some Movie", "genres": ["Thriller","Action"]},
+    ...
+  ],
+  "total": 150,
+  "page": 1,
+  "limit": 10
+}
